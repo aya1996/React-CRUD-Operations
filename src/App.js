@@ -4,8 +4,10 @@ import './App.css';
 import {Button,Row,Container,Col,Form,Navbar,Table, NavbarBrand} from 'react-bootstrap';
 function App() {
 const[products,setProduct]=React.useState([]);
-const[newProduct,setNewProduct]=React.useState(' ');
-const [updateProdct,SetUpdateProduct]=React.useState(' ');
+const[ProductName,setNewName]=React.useState(' ');
+const[ProductPrice,NewPrice]=React.useState(' ');
+const [updateName,SetUpdateName]=React.useState(' ');
+const [updatePrice,SetUpdatePrice]=React.useState(' ');
 
 React.useEffect(()=>{
 const fetchData=async()=>{
@@ -21,7 +23,7 @@ fetchData();
 },[]);
 const onCreate=()=>{
   const db=firebase.firestore()
-  db.collection("products").add({name:newProduct})
+  db.collection("products").add({name:ProductName ,price:ProductPrice})
 };
 
 function onDelete(id){
@@ -31,7 +33,7 @@ function onDelete(id){
 };
 const onUpdate=(id)=>{
   const db=firebase.firestore()
-  db.collection('products').doc(id).set({name:updateProdct})
+  db.collection('products').doc(id).set({name:updateName , price:updatePrice})
 };
 return(
 <div>
@@ -44,10 +46,13 @@ return(
   <Container>
     <Row>
       <Col>
-      <h2>ADD NEW PRODUCT</h2>
+      <h2 className="text-center">ADD NEW PRODUCT</h2>
       <form>
         <Form.Group controlId="formBasic">
-          <Form.Control type="text" value={newProduct} onChange={e=>setNewProduct (e.target.value)} /> 
+          <label>Product Name</label>
+          <Form.Control type="text" value={ProductName} onChange={e=>setNewName (e.target.value)} /> 
+          <label>Product Price</label>
+          <Form.Control type="text" value={ProductPrice} onChange={e=>NewPrice(e.target.value)} />
           <br></br>
           <Button variant="primary" onClick={onCreate}>Create Product</Button>
         </Form.Group>
@@ -69,10 +74,14 @@ return(
           <tr key={spell.id}>
           <td>{spell.id}</td>
           <td>{spell.name}</td>
-          <td><Button variant="outline-danger" onClick={()=>onDelete(spell.id)}>Delete Product</Button></td>
+          <td>{spell.price}</td>
+          <td><Button variant="danger" onClick={()=>onDelete(spell.id)}>Delete Product</Button></td>
           <td>
-          <input type="text" className="" placeholder={spell.name} onChange={e=>SetUpdateProduct(e.target.value)}></input>
-          <Button className="text-white ml-4" variant="outline-warning" onClick={()=>onUpdate(spell.id)}>Update Product </Button>
+          <label>Product Name</label>
+          <input type="text" className="form-control" placeholder={spell.name} onChange={e=>SetUpdateName(e.target.value)}></input><br></br>
+          <label>Product Price</label>
+          <input type="text" className="form-control" placeholder={spell.price} onChange={e=>SetUpdatePrice(e.target.value)}></input><br></br>
+          <Button className="text-white ml-4" variant="warning" onClick={()=>onUpdate(spell.id)}>Update Product </Button>
           
           </td>
         </tr>
