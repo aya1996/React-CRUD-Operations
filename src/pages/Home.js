@@ -49,7 +49,7 @@ Launches the test runner in the interactive watch mode.<br></br>
 See the section about running tests for more information.<br></br>
 
 <h4>npm run build</h4>
-Builds the app for production to the build folder.<br></br>
+Build the app for production to the build folder.<br></br>
 It correctly bundles React in production mode and optimizes the build for the best performance.<br></br>
     </Card.Text>
     <a className="primary" href="/Products">Add Products</a>
