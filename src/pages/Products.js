@@ -25,17 +25,22 @@ fetchData();
 const onCreate=()=>{
   const db=firebase.firestore()
   db.collection("products").add({name:ProductName ,price:ProductPrice})
+  alert('Your Product Was Added Succsessfuly... ');
 };
 
 function onDelete(id){
   const db=firebase.firestore()
+  alert('Are You Sure! You Want To Delete ?... ');
   db.collection("products").doc(id).delete()
 
 };
 const onUpdate=(id)=>{
   const db=firebase.firestore()
   db.collection('products').doc(id).set({name:updateName , price:updatePrice})
+  alert('Your Product Was Updated Succsessfuly... ');
 };
+
+   
 return(
 <div>
   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -68,14 +73,16 @@ return(
     <Row>
       <Col>
       <h2 className="text-center">ADD NEW PRODUCT</h2>
-      <form>
+      <form id="ProductForm"  >
+    
         <Form.Group controlId="formBasic">
           <label>Product Name</label>
-          <Form.Control type="text" value={ProductName} onChange={e=>setNewName (e.target.value)} /> 
+          <Form.Control type="text" value={ProductName} onChange={e=>setNewName (e.target.value) } /> 
           <label>Product Price</label>
-          <Form.Control type="text" value={ProductPrice} onChange={e=>NewPrice(e.target.value)} />
+          <Form.Control type="number" value={ProductPrice} onChange={e=>NewPrice(e.target.value)} />
           <br></br>
-          <Button variant="primary" onClick={onCreate}>Create Product</Button>
+          <Button type="submit" variant="primary" onClick={onCreate}>Create Product</Button>
+        
         </Form.Group>
       </form>
       </Col>
