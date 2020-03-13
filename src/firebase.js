@@ -7,14 +7,14 @@ import "firebase/firestore";
 
  // Your web app's Firebase configuration
  var firebaseConfig = {
-  apiKey: "AIzaSyBUfLHnmEH-TsMr8LWdvOfaZViwNreiPjA",
-  authDomain: "react-app-165ae.firebaseapp.com",
-  databaseURL: "https://react-app-165ae.firebaseio.com",
-  projectId: "react-app-165ae",
-  storageBucket: "react-app-165ae.appspot.com",
-  messagingSenderId: "605048794305",
-  appId: "1:605048794305:web:31eabc1d78398259573840",
-  measurementId: "G-534BY6N1CF"
+  apiKey: "AIzaSyBQ8wzyqNiOigAQZ6J8uLidmMLK6MYfbz8",
+  authDomain: "reactapp-923d1.firebaseapp.com",
+  databaseURL: "https://reactapp-923d1.firebaseio.com",
+  projectId: "reactapp-923d1",
+  storageBucket: "reactapp-923d1.appspot.com",
+  messagingSenderId: "473197869711",
+  appId: "1:473197869711:web:4f5911db394a2655d58efa",
+  measurementId: "G-PTCBW0YJ21"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
